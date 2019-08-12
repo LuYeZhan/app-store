@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {Link} from 'react-router-dom'
 import appStoreService from '../services/app-store-services'
 
 class AppList extends Component {
@@ -34,9 +35,14 @@ handleDeleteClick = (id) => {
         return (
             <div>
                 <h1>App List</h1>
+                <section className= 'list-container'>
+                
+                <Link to='/apps/create'><button> Create a new App</button> </Link>
+                
+                
                 {apps.length > 0 ? apps.map((app) =>{
                     return (
-                        <article>
+                        <article key={app._id}>
                             <img src={app.image} alt={app.name}/>
                             <h3>{app.name}</h3>
                             <p>{app.price}</p>
@@ -48,7 +54,7 @@ handleDeleteClick = (id) => {
                     )
                 }): <p>Loading...</p> }
                    
-                   
+               </section>    
                   
             </div>
         )
